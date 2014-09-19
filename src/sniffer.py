@@ -1,8 +1,7 @@
 #! /usr/bin/python
 from scapy.all import *
-from collections import Counter
 
-pairs = Counter()
+pairs = {}
 
 def arp_monitor_callback(pkt):
     global pairs
@@ -14,6 +13,9 @@ def arp_monitor_callback(pkt):
         dst = pkt[ARP].pdst
 
         sys.stderr.write('ARP {} -> {}\n'.format(src, dst))
+
+
+        pairs[(src, dst)] = pairs.get((src, dst), 0) + 1
         pairs.update({(src, dst): 1})
 
-    sniff(prn=arp_monitor_callback, store=0, count=1)
+sniff(prn=arp_monitor_callback, store=0, count=1)
