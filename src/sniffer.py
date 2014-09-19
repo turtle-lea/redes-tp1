@@ -1,28 +1,21 @@
 #! /usr/bin/python
-import scapy.all
+from scapy.all import *
+from collections import Counter
 
-ipVecesEnSrc  = {}
-ipVecesEnDst  = {}
-ipIntercambio = {}
+pairs = Counter()
 
 def arp_monitor_callback(pkt):
+    global pairs
 
-	ARP = scapy.all.ARP
+    ARP = scapy.all.ARP
 
-	if (ARP in pkt) and (pkt[ARP].op is 1):
-		#Is who-has
-		src = pkt[ARP].psrc
-		dst = pkt[ARP].pdst
+    if (ARP in pkt) and (pkt[ARP].op is 1):
+        src = pkt[ARP].psrc
+        dst = pkt[ARP].pdst
 
-		# If no value is defined return cero add one and set
-		ipVecesEnSrc[src] = ipVecesEnSrc.get(src, 0.0) + 1.0
-		ipVecesEnDst[dst] = ipVecesEnDst.get(dst, 0.0) + 1.0
-		ipIntercambio[src,dst] = ipIntercambio.get((src,dst), 0.0) + 1.0
+        sys.stderr.write('ARP {} -> {}\n'.format(src, dst))
+        pairs.update({(src, dst): 1})
 
-		print "\nNuevos Resultados"
-		print ipVecesEnSrc
-		print ipVecesEnDst
-		print ipIntercambio
-
-scapy.all.sniff(prn=arp_monitor_callback, filter="arp", store=0)
-
+try:
+    sniff(prn=arp_monitor_callback, store=0)
+        print('{}\t{}\t{}'.format(pairs[x], x[0], x[1]))
