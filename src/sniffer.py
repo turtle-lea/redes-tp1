@@ -16,6 +16,4 @@ def arp_monitor_callback(pkt):
         sys.stderr.write('ARP {} -> {}\n'.format(src, dst))
         pairs.update({(src, dst): 1})
 
-try:
-    sniff(prn=arp_monitor_callback, store=0)
-        print('{}\t{}\t{}'.format(pairs[x], x[0], x[1]))
+    sniff(prn=arp_monitor_callback, store=0, count=1)
