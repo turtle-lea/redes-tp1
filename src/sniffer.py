@@ -17,4 +17,4 @@ def arp_monitor_callback(pkt):
 while sum(pairs.values()) < 100:
     sniff(prn=arp_monitor_callback, store=0, count=1)
 
-print '\n'.join(['{}\t{}\t{}'.format(pairs[x], x[0], x[1]) for x in pairs])
+print('\n'.join(['{}\t{}\t{}'.format(pairs[x], x[0], x[1]) for x in pairs]))
