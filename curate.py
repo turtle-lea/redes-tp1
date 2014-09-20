@@ -10,10 +10,13 @@ nodes = Counter()
 edges = {}
 
 for times, src, dst in [line.split() for line in sys.stdin]:
-    nodes |= {src: 1, dst: 1}
+    nodes += {src: times, dst: times}
     edges[src, dst] = int(times)
 
 print ('digraph G {')
+
+import ipdb
+ipdb.set_trace()
 
 used_nodes = {node for _, node in heapq.nlargest(50, ((nodes[i], i) for i in nodes))}
 
