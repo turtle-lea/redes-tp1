@@ -14,7 +14,7 @@ def arp_monitor_callback(pkt):
         sys.stderr.write('ARP {} -> {}\n'.format(src, dst))
         pairs.update({(src, dst): 1})
 
-while sum(pairs.values()) < 5000:
+while sum(pairs.values()) < 400:
     sniff(prn=arp_monitor_callback, store=0, count=1)
 
 for x in pairs:

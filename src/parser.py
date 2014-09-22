@@ -101,10 +101,18 @@ ipsCon = Counter()
 with open(entrada,'r') as archivo:
 
     for linea in archivo:
-        _,src,_,dst = linea.split()
-        ipsSrc[src] += 1 
-        ipsDst[dst] += 1
-        ipsCon[src,dst] += 1 
+	line = linea.split()
+
+	times = 1
+	if len(line) == 2:
+		src,dst = line
+	else:
+		times,src,dst = line
+	times = int(times)
+
+        ipsSrc[src] += times 
+        ipsDst[dst] += times
+        ipsCon[src,dst] += times 
 
 esrc = entropia(ipsSrc)
 edst = entropia(ipsDst)
