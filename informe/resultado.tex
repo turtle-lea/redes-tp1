@@ -57,8 +57,13 @@ parecen pertenecer a dicha red, a conocer:
 
 \begin{itemize}
 	\item Por un lado, el componente más pequeño, el cual se centraliza 
-en la dirección 10.254.80.1. 
-	\item Por otro, la dirección 169.254.255.255.
+en la dirección 10.254.80.1. Suponemos que ésta dirección es la de un router
+de otra red (10.254.80.0/24) y en algún momento sniffeamos paquetes de dicha 
+red sin enterarnos.
+	\item Por otro lado, la dirección 169.254.255.255. Investigamos esta
+IP y encontramos que es utilizada como broadcast por DHCP que es un protocolo
+de configuración automática de parámetros de red tales como direcciones IP
+para interfaces y servicios.
 \end{itemize} 
 
 
