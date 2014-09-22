@@ -22,14 +22,12 @@
    \caption{Grafo de la red}
 \end{wrapfigure}
 
-En el caso de la casa familiar sabiamos de antemano que el router es 192.168.1.1. Dicha ip es de las
+En el caso de la casa familiar sabíamos de antemano que el router es 192.168.1.1. Dicha ip es de las
 que aparecen con mayor frecuencia en los campos SRC o DST. Ambos grafos presentan forma de estrella,
 teniendo al router como centro. La entrop\'ia fue: $1.68$ para el modelo $SRC$ y $2.67$ para el modelo
 DST. Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo interesante, 
 aparecieron paquetes ARP con direcciones que no pertenecian a la red local, esto se puede deber a que
  \textcolor{red}{NO TENGO LA MENOR IDEA}
-
-
 
 
 
@@ -40,5 +38,33 @@ aparecieron paquetes ARP con direcciones que no pertenecian a la red local, esto
 
 
 
+
+*******************************************************************************************
+
+
+~
+
+
+Para el caso de la red abierta disponible en Starbucks, podemos ver en el 
+grafo una notoria centralización de paquetes hacia/desde la dirección
+10.254.88.1, lo cual sería el comportamiento esperado del router de la red
+10.254.88.0/24. Asumimos que ésta es la dirección de la red puesto que 
+la mayoría de las IPs de los paquetes capturados difieren en el último octeto.
+
+
+Decimos "la mayoría" dado que se capturaron paquetes con direcciones que no 
+parecen pertenecer a dicha red, a conocer:
+
+\begin{itemize}
+	\item Por un lado, el componente más pequeño, el cual se centraliza 
+en la dirección 10.254.80.1. 
+	\item Por otro, la dirección 169.254.255.255.
+\end{itemize} 
+
+
+~
+
+
+*******************************************************************************************
 
 
