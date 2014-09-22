@@ -1,0 +1,26 @@
+El primer paso en este trabajo fue implementar una $tool$ para escuchar pasivamente paquetes de una red local dada. 
+Para esto utilizamos la librería Scapy de Python, la cual provee una gran variedad
+de herramientas para trabajar con distintos paquetes de diversos protocolos.
+
+Básicamente utilizamos la función \emph{sniff} que captura paquetes que se transmiten
+por la red en la cual estamos conectados, y se filtran los paquetes que no son ARP, 
+o que tienen la operation reply, quedándonos únicamente con los \emph{who-has}.
+
+Luego, comprimimos estos datos para ahorrar extensión, es decir, si una dirección pregunta varias veces por otra,
+esto se reduce a una tripla \textbf{n paquetes enviados | ip\_src | ip\_dst}. Terminamos ordenando esta información según la cantidad de paquetes, de mayor a menor.
+
+Con estas observaciones nos proponemos a calcular la entropia de dos tipos
+distintos de fuente según el modelo presentado: \textbf{$S_{src}$} y \textbf{$S_{dst}$}
+
+
+donde los símbolos son las direcciones IP que aparecen en los paquetes ARP who-has
+como fuente y como destino respectivamente.
+
+En relación a esto tenemos una mejor base para realizar un análisis del estado de 
+la red al momento de las mediciones, y podemos analizar estadísticamente qué IPs 
+son más relevantes o significativas en la LAN utilizando la información del símbolo 
+con respecto a la entropía de la fuente correspondiente.
+
+En la próxima sección podrán verse los datos obtenidos y el análisis de los mismos
+para las distintas redes en las cuales fueron realizadas las capturas: \textcolor{red}{Entrepiso DC} (\textbf{2634} paquetes), \textcolor{red}{Fibertel Zone} de Starbucks (\textbf{500} paquetes)
+
