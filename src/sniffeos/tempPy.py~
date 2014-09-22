@@ -1,9 +1,11 @@
 import ast
 
-archivo = open("casaGuille",'r')
+archivo = open("empresa",'r')
 
 for line in archivo:
     cnt, src, dst = line.split()
-    
-    print "ARP {} -> {}".format(src, dst)
+    cnt = int(cnt)
+
+    for i in xrange(0,cnt):
+        print "ARP {} -> {}".format(src, dst)
 

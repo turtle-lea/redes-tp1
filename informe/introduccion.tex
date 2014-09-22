@@ -1,10 +1,13 @@
-\emph{Adress resolution protocol} permite mapear direcciones IP a direcciones físicas. Cuando un host desea comunicarse con otro
-dentro de una misma red local necesita conocer la \emph{MAC} adress del mismo. Conociendo su dirección IP, el protocolo le permite
-enviar un paquete \emph{who-has} mediante un broadcast para obtener dicha dirección. De esta manera recibe un paquete unicast
-\emph{ARP-reply} por parte del host destino que tiene dicha dirección IP.
-Para evitar una cantidad excesiva de broadcasts, cada nodo de la red mantiene su propia tabla de mapeos que actualiza luego de cierto tiempo.
+El protocolo ARP (\emph{Adress Resolution Protocol}) permite mapear direcciones IP a direcciones
+físicas. Cuando un host desea comunicarse con otro dentro de una misma red local debe hacerlo
+utilizando la \emph{MAC Adress} del mismo. Conociendo su dirección IP, puede \emph{brodcastear} un
+paquete \emph{ARP who-has} pidiendo la \emph{MAC} asociada a dicha IP. De esta manera recibirá en
+respuesta un paquete \emph{ARP-reply} por parte del host destino.
+Para evitar una cantidad excesiva de broadcasts, cada nodo de la red mantiene su propia tabla de
+mapeos que actualiza luego de cierto tiempo.
 
-Cada paquete incluye numerosos campos (Hardware type, protocol type, etc). Sin embargo, pondremos énfasis especialmente en los siguientes:
+Cada paquete ARP incluye numerosos campos. Sin embargo, pondremos énfasis especialmente en los 
+siguientes:
 \begin{itemize}
     \item Operation: 1 == request, 2 == reply
     \item Sender hardware adress: \emph{MAC} address source
@@ -13,17 +16,7 @@ Cada paquete incluye numerosos campos (Hardware type, protocol type, etc). Sin e
     \item Target protocol adress: \emph{IP} address dest
 \end{itemize}
 
-El objetivo del trabajo práctico consiste en analizar el flujo de paquetes \emph{who-has} en distintas redes 
-no contraladas. De esta manera podemos corroborar de manera empírica el comportamiento establecido por el protocolo \emph{ARP} 
-para el envío de paquetes en una red local.  
-
-
-
-
-
-
-
-A partir de los paquetes ARP que capturamos con la función $sniff$ de la librería scapy, graficamos un grafo que relaciona ips como 
-nodos de manera tal que exista un eje del nodo ip\_src al nodo ip\_dst si se capturó al menos un paquete \emph{who-has} emitido por 
-ip\_src preguntando por la mac\_addr de la ip\_dst.
-
+El objetivo de este trabajo práctico es analizar el flujo de paquetes \emph{who-has} en distintas
+redes no contraladas. Luego, en base a la informaci\'on recopilada, analizaremos el rol que juega
+cada dispositivo dentro de la red. De esta manera podemos corroborar de manera empírica el 
+comportamiento establecido por el protocolo \emph{ARP} para el envío de paquetes en una red local.  
