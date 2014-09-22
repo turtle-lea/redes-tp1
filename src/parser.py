@@ -31,7 +31,7 @@ def guardarHistograma(dicc,campo,archivo):
 
     ipsOrdenadas = sorted(dicc, key=dicc.get)[-14:]
     totalSumaVal = float(sum(dicc.values()))
-    valoresOrden = [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ] 
+    valoresOrden = [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ] + {'Otros': totalSumaVal - sum(ipsOrdenadas.values)}
 
     largo = len(ipsOrdenadas)
     yPos  = xrange(-4,(largo-2)*2,2)
@@ -100,15 +100,14 @@ ipsCon = Counter()
 
 with open(entrada,'r') as archivo:
 
-    for linea in archivo:
-	line = linea.split()
+    for linea in (linea.split() for linea in archivo):
+        times = 1
 
-	times = 1
-	if len(line) == 2:
-		src,dst = line
-	else:
-		times,src,dst = line
-	times = int(times)
+        if len(linea) == 2:
+            src,dst = linea
+        else:
+            times, src, dst = linea
+            times = int(times)
 
         ipsSrc[src] += times 
         ipsDst[dst] += times
