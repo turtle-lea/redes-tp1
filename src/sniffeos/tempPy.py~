@@ -1,0 +1,9 @@
+import ast
+
+archivo = open("casaGuille",'r')
+
+for line in archivo:
+    cnt, src, dst = line.split()
+    
+    print "ARP {} -> {}".format(src, dst)
+
