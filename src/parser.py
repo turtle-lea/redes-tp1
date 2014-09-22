@@ -31,13 +31,13 @@ def guardarHistograma(dicc,campo,archivo):
 
     ipsOrdenadas = sorted(dicc, key=dicc.get)[-14:]
     totalSumaVal = float(sum(dicc.values()))
-    valoresOrden = [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ] + {'Otros': totalSumaVal - sum(ipsOrdenadas.values)}
+    valoresOrden = [1 - sum(dicc[ip] for ip in ipsOrdenadas) / totalSumaVal] + [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ]
 
     largo = len(ipsOrdenadas)
-    yPos  = xrange(-4,(largo-2)*2,2)
+    yPos  = xrange(-4,(largo-2)*2 + 2,2)
     myBar = pylab.barh(yPos, valoresOrden, alpha=0.5,height=1.8,align='center')
 
-    pylab.yticks(yPos, ipsOrdenadas)
+    pylab.yticks(yPos, ['Otros'] + ipsOrdenadas)
 
     pylab.xlabel('Frecuencia')
     pylab.ylabel('IP')
