@@ -6,32 +6,46 @@ import pylab
 import re
 import argparse
 import networkx as nx
+from collections import Counter
 
 pylab.clf()
-pylab.subplots_adjust(bottom=0.16,left=0.22)
 
 def entropia(dicc):
     #Takes an Dictionary [key,float] and calculates entropy
-    N = sum(dicc.values())
+    N = float(sum(dicc.values()))
     Ps = [ k/N for k in dicc.values() ]
     H = -sum([ p*numpy.log2(p) for p in Ps ])
     return H
 
 
+def autolabel(rects):
+    # attach some text labels
+    for rect in rects:
+        width = rect.get_width()
+        ySize = max(width,1.)
+
+        pylab.text(width*1.05, rect.get_y()+rect.get_height()*0.5, 
+                '%.2f'%float(width), va='center')
+
 def guardarHistograma(dicc,campo,archivo):
 
-    ipsOrdenadas = sorted(dicc, key=dicc.get)
+    ipsOrdenadas = sorted(dicc, key=dicc.get)[-14:]
     totalSumaVal = float(sum(dicc.values()))
     valoresOrden = [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ] 
 
-    largo  = len(ipsOrdenadas)
-    yPos = xrange(largo)
-    pylab.barh(yPos, valoresOrden, align='center',height=1.0,alpha=0.5)
+    largo = len(ipsOrdenadas)
+    yPos  = xrange(-4,(largo-2)*2,2)
+    myBar = pylab.barh(yPos, valoresOrden, alpha=0.5,height=1.8,align='center')
+
     pylab.yticks(yPos, ipsOrdenadas)
+
+    pylab.xlabel('Frecuencia')
     pylab.ylabel('IP')
-    pylab.xlabel('Apariciones Normalizadas')
     pylab.title('IPs en campo ' + campo)
-    pylab.savefig(archivo,format='pdf')
+
+    autolabel(myBar)
+    pylab.tight_layout()
+    pylab.savefig(archivo,format='pdf',orientation='landscape')
     pylab.clf()
 
 def grafoConectividad(dicc,ruta):
@@ -71,6 +85,8 @@ def grafoConectividad(dicc,ruta):
     pylab.axis('off')
     pylab.savefig(ruta+"NX",format='pdf')
 
+#----------------------------------------
+
 parser = argparse.ArgumentParser(description='Hace los graficos, histogramas y calcula entropia')
 parser.add_argument('-i', '--inputF', type=str, help='El archivo a parsear')
 parser.add_argument('-o', '--outputD', type=str, help='El directorio salida')
@@ -78,12 +94,17 @@ args = parser.parse_args()
 
 entrada = args.inputF
 salida  = args.outputD
-
+ipsSrc = Counter()
+ipsDst = Counter()
+ipsCon = Counter()
 
 with open(entrada,'r') as archivo:
-    ipsSrc = ast.literal_eval(archivo.readline())
-    ipsDst = ast.literal_eval(archivo.readline())
-    ipsCon = ast.literal_eval(archivo.readline())
+
+    for linea in archivo:
+        _,src,_,dst = linea.split()
+        ipsSrc[src] += 1 
+        ipsDst[dst] += 1
+        ipsCon[src,dst] += 1 
 
 esrc = entropia(ipsSrc)
 edst = entropia(ipsDst)
