@@ -106,6 +106,26 @@ entre cada uno de estos y el router.
 	\end{subfigure}
 \end{figure}
 
+En el gráfico de barras del modelo SRC el router juega un papel relevante ya que es el segundo símbolo con mayor cantidad de emisión de paquetes. Es interesante mencionar que el 
+nodo con mayor cantidad de paquetes enviados, cuya ip es 192.168.0.2, corresponde a un servidor apache. El resto de los nodos que aparecen en el gráfico corresponden a notebooks
+y celulares conectados a la red. Este hecho es similar a los experimentos anteriores.
+
+En el gráfico de barras del modelo DST es en donde se nota la mayor cantidad de diferencias. El router no se corresponde con ninguno de los 3 nodos con mayor cantidad de paquetes
+recibidos:
+
+\begin{itemize}
+    \item 192.168.0.118 corresponde a una notebook
+    \item 192.168.0.125 corresponde a un servidor apache
+    \item 192.168.0.107 corresponde a un servidor apache
+\end{itemize}
+
+Recién aparece en la cuarta posición, con una cantidad de paquetes recibidos considerablemente menor a los primeros. En esta red en particular los dispositivos se envían paquetes
+who-has entre ellos en mayor medida, y hacia los servidores en vez de hacia el router.
+
+El valor de la entropía para el gráfico de fuente SRC es $2.05542931604$
+El valor de la entropía para el gráfico de fuente DST es $2.99926622579$
+
+
 ~
 
 Los gráficos de barra muestran que el router ha perdido preponderancia respecto a la emisión y recepción de paquetes en comparación con otros nodos distinguidos.
