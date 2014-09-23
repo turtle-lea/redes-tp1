@@ -1,5 +1,25 @@
 \subsection{Casa Familia}
 
+\begin{wrapfigure}{R}{0.4\textwidth}
+\vspace{-35pt}
+\hspace{-35pt}
+\centering
+   \includegraphics[width=0.4\textwidth]{resultados/casa/conectividadNX.pdf}
+\vspace{-30pt}
+   \caption{Grafo de la red}
+\end{wrapfigure}
+
+En el caso de la casa familiar sab\'iamos de antemano que la direcci\'on del router
+es 192.168.1.1 y que 192.168.1.35 pertenece al dispositivo que m\'as tiempo estuvo
+prendido, el mismo es una notebook. La ip del router es de las que aparece con mayor
+frecuencia en los campos SRC o DST, mientras que $.35$ solo aparece un alto n\'umero
+de veces en DST. 
+
+Ambos grafos presentan forma de estrella, teniendo al router como centro. 
+La entrop\'ia fue: $1.68$ para el modelo $SRC$ y $2.67$ para el modelo DST.
+Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo interesante, 
+aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
+
 \begin{figure}[H]
 	\center
 	\begin{subfigure}{0.4\textwidth}
@@ -13,64 +33,72 @@
 	\end{subfigure}
 \end{figure}
 
+
+\subsection{Starbucks}
+
 \begin{wrapfigure}{R}{0.4\textwidth}
 \vspace{-35pt}
 \hspace{-35pt}
 \centering
-   \includegraphics[width=0.4\textwidth]{resultados/casa/conectividadNX.pdf}
+   \includegraphics[width=0.4\textwidth]{resultados/starbucks/conectividadNX.pdf}
 \vspace{-30pt}
    \caption{Grafo de la red}
 \end{wrapfigure}
 
-En el caso de la casa familiar sabíamos de antemano que el router es 192.168.1.1. Dicha ip es de las
-que aparecen con mayor frecuencia en los campos SRC o DST. Ambos grafos presentan forma de estrella,
-teniendo al router como centro. La entrop\'ia fue: $1.68$ para el modelo $SRC$ y $2.67$ para el modelo
-DST. Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo interesante, 
-aparecieron paquetes ARP con direcciones que no pertenecian a la red local, esto se puede deber a que
- \textcolor{red}{NO TENGO LA MENOR IDEA}
+
+Para el caso de la red abierta disponible en Starbucks, podemos ver en el 
+grafo simple una notoria centralizaci\'on de paquetes hacia/desde la direcci\'n
+10.254.88.1, la cual a su vez posee una alta frecuencia de aparici\'on en ambos
+modelos. Esto ser\'ia el comportamiento esperado del router de la red
+10.254.88.0/24. Asumimos que \'esta es la direcci\'on de la red puesto que 
+la mayor\'ia de las IPs de los paquetes capturados difieren en el \'ultimo octeto.
+Por otro lado, podemos ver que la segunda direcci\'on con mayor frecuencia en DST
+fue 10.254.80.1, seguida por 10.254.88.8. Suponemos que $88.8$ es la pc del lugar
+dada la ip baja, y la cantidad de apariciones. Por otro lado, no sabemos que es
+$80.1ç$ dado que parece formar una red aparte de la sniffeada.
+
+La entrop\'ia fue: $4.61$ para el modelo $SRC$ y $3.76$ para el modelo
+DST.
 
 
+Nuevamente entre los paquetes capturados volvieron a aparecer direcciones que
+no parecieran pertenecer a la red local, resultando sumamente interesante el caso
+de 10.254.80.1
 
 \begin{figure}[H]
-   \includegraphics[width=1.0\textwidth]{resultados/casa/conectividad.pdf}
-   \caption{Grafo dirigido de la red con peso en las aristas}
+	\center
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/starbucks/ipsSrc_4_6187931499.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo SRC}
+	\end{subfigure}
+	~
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/starbucks/ipsDst_3_76848714287.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
+	\end{subfigure}
 \end{figure}
 
 
+\subsection{Entrepiso}
+
+En el caso del entrepiso los grafos muestran tres nodos con la forma que caracteriz\'o 
+al router dentro de la casa, estos nodos son: 10.1.100.254, 10.1.200.30 y 10.1.200.254.
+Sin embargo, estos poseen al menos la mitad de las aparaciones que otros nodos en 
+el modelo DST, cosa que $200.30$ repite en SRC.
 
 
-*******************************************************************************************
+\subsection{Discusi\'on}
 
-
-~
-
-
-Para el caso de la red abierta disponible en Starbucks, podemos ver en el 
-grafo una notoria centralización de paquetes hacia/desde la dirección
-10.254.88.1, lo cual sería el comportamiento esperado del router de la red
-10.254.88.0/24. Asumimos que ésta es la dirección de la red puesto que 
-la mayoría de las IPs de los paquetes capturados difieren en el último octeto.
-
-
-Decimos "la mayoría" dado que se capturaron paquetes con direcciones que no 
-parecen pertenecer a dicha red, a conocer:
 
 \begin{itemize}
-	\item Por un lado, el componente más pequeño, el cual se centraliza 
-en la dirección 10.254.80.1. Suponemos que ésta dirección es la de un router
-de otra red (10.254.80.0/24) y en algún momento sniffeamos paquetes de dicha 
+	\item Por un lado, el componente m\'as pequeño, el cual se centraliza 
+en la direcci\'on 10.254.80.1. Suponemos que \'esta direcci\'on es la de un router
+de otra red (10.254.80.0/24) y en alg\'un momento sniffeamos paquetes de dicha 
 red sin enterarnos.
-	\item Por otro lado, la dirección 169.254.255.255. Investigamos esta
+	\item Por otro lado, la direcci\'on 169.254.255.255. Investigamos esta
 IP y encontramos que es utilizada como broadcast por DHCP que es un protocolo
-de configuración automática de parámetros de red tales como direcciones IP
+de configuraci\'on autom\'atica de par\'ametros de red tales como direcciones IP
 para interfaces y servicios.
-	\item Por último, la dirección 0.0.0.0. \textcolor{red}{FALTA EXPLICAR y poner referencias}
+	\item Por \'ultimo, la direcci\'on 0.0.0.0. \textcolor{red}{FALTA EXPLICAR y poner referencias}
 \end{itemize} 
-
-
-~
-
-
-*******************************************************************************************
-
 
