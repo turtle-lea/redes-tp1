@@ -1,0 +1,14 @@
+En el DST :
+
+192.168.0.118 = Computadora
+192.168.0.125 = Servidor apache
+192.168.0.107 = Computadora
+192.168.0.1 = Router
+192.168.0.4 = Servidor corriendo virtual box
+192.168.0.2 = Servidor apache
+
+
+En el SRC:
+192.168.0.2 = Servidor apache
+192.168.0.1 = Router
+El resto son computadoras. La mía es 192.168.0.127 ;)
