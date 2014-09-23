@@ -81,24 +81,68 @@ de 10.254.80.1
 
 \subsection{Entrepiso}
 
+\begin{wrapfigure}{R}{0.4\textwidth}
+\vspace{-35pt}
+\hspace{-35pt}
+\centering
+   \includegraphics[width=0.4\textwidth]{resultados/entrepiso/conectividadNX.pdf}
+\vspace{-30pt}
+   \caption{Grafo de la red}
+\end{wrapfigure}
+
 En el caso del entrepiso los grafos muestran tres nodos con la forma que caracteriz\'o 
 al router dentro de la casa, estos nodos son: 10.1.100.254, 10.1.200.30 y 10.1.200.254.
 Sin embargo, estos poseen al menos la mitad de las aparaciones que otros nodos en 
-el modelo DST, cosa que $200.30$ repite en SRC.
+el modelo DST, cosa que $200.30$ repite en SRC. La entrop\'ia fue: $4.25$ para el
+modelo $SRC$ y $4.90$ para el modelo DST. El Entrepiso fue la red con mas entrop\'ia.
+Una vez mas aparecieron direcciones sueltas, como es por ej: 10.1.11.254.
+
+\begin{figure}[H]
+	\center
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/entrepiso/ipsSrc_4_25991830161.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo SRC}
+	\end{subfigure}
+	~
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/entrepiso/ipsDst_4_90633854055.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
+	\end{subfigure}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[width=1.0\textwidth]{resultados/entrepiso/conectividad.pdf}
+	\caption{Digrafo de conectividad en el entrepiso}
+\end{figure}
 
 
 \subsection{Discusi\'on}
 
+        En todas las redes sucedi\'o que aparecieran direcciones ip que se supone
+no pertenecen a la misma. 
 
-\begin{itemize}
-	\item Por un lado, el componente m\'as pequeño, el cual se centraliza 
-en la direcci\'on 10.254.80.1. Suponemos que \'esta direcci\'on es la de un router
-de otra red (10.254.80.0/24) y en alg\'un momento sniffeamos paquetes de dicha 
-red sin enterarnos.
-	\item Por otro lado, la direcci\'on 169.254.255.255. Investigamos esta
-IP y encontramos que es utilizada como broadcast por DHCP que es un protocolo
-de configuraci\'on autom\'atica de par\'ametros de red tales como direcciones IP
+        En algunos casos apareci\'o la direcci\'on 169.254.255.255. Investigando
+encontramos que es utilizada como broadcast por DHCP que es un protocolo de 
+configuraci\'on autom\'atica de par\'ametros de red tales como direcciones IP
 para interfaces y servicios.
-	\item Por \'ultimo, la direcci\'on 0.0.0.0. \textcolor{red}{FALTA EXPLICAR y poner referencias}
-\end{itemize} 
+
+        La direcci\'on 0.0.0.0 es el estandar para \emph{broadcastear} dentro
+de una red local
+
+        Por otra parte, el resto de las direcciones IP que aparecen pueden deberse
+a que los routers posean la opci\'on de \emph{Proxy ARP} habilitada, cosa que tiene 
+mucho sentido en el caso del Entrepiso por ej.
+
+        A su vez, si bien en los grafos se not\'o claramente la direcci\'on ip
+de los routers, esto solo se vio reflejado en la estimaci\'on de la probabilidad
+en los modelos solo en la Casa y el Starbucks. Esto muestra que el contar la 
+cantidad de apariciones de una IP en los campos no es suficiente para detectar
+los routers de la red.
+
+        Por otra parte, ser\'ia interesante realizar otro experimento para ver
+si las direcciones con mayor frecuencia de aparici\'on se corresponden a dispositivos
+utilizados durante largos per\'iodos dentro de la red. Quizas esto permite detectar
+los nodos utilizados por usuarios.  ESTO REFORZARLO O TIRARLO ABAJO EN BASE AL 
+CONOCIMIENTO DEL LUGAR DE TRABAJO... EN CASO DE NO SABER, MENTIR.
+
 
