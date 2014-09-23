@@ -6,7 +6,7 @@
 \centering
    \includegraphics[width=0.4\textwidth]{resultados/casa/conectividadNX.pdf}
 \vspace{-30pt}
-   \caption{Grafo de la red}
+   \caption{Grafo de la red Casa}
 \end{wrapfigure}
 
 
@@ -97,15 +97,6 @@ de 10.254.80.1
 
 \subsection{Empresa}
 
-\begin{wrapfigure}{R}{0.4\textwidth}
-\vspace{-35pt}
-\hspace{-35pt}
-\centering
-   \includegraphics[width=0.4\textwidth]{resultados/empresa/conectividadNX.pdf}
-\vspace{-30pt}
-   \caption{Topología de la red en una empresa}
-\end{wrapfigure}
-
 En este caso la topología del grafo de la red no coincide con la de una estrella. Es posible observar una interacción mucho mayor entre distintos pares hosts, y no únicamente
 entre cada uno de estos y el router.
 
@@ -126,6 +117,19 @@ En el gráfico de barras del modelo SRC el router juega un papel relevante ya qu
 nodo con mayor cantidad de paquetes enviados, cuya ip es 192.168.0.2, corresponde a un servidor apache. El resto de los nodos que aparecen en el gráfico corresponden a notebooks
 y celulares conectados a la red. Este hecho es similar a los experimentos anteriores.
 
+~
+
+\begin{wrapfigure}{R}{0.4\textwidth}
+\vspace{-35pt}
+\hspace{-35pt}
+\centering
+   \includegraphics[width=0.4\textwidth]{resultados/empresa/conectividadNX.pdf}
+\vspace{-30pt}
+   \caption{Topología de la red en una empresa}
+\end{wrapfigure}
+
+~
+
 En el gráfico de barras del modelo DST es en donde se nota la mayor cantidad de diferencias. El router no se corresponde con ninguno de los 3 nodos con mayor cantidad de paquetes
 recibidos:
 
@@ -138,22 +142,28 @@ recibidos:
 Recién aparece en la cuarta posición, con una cantidad de paquetes recibidos considerablemente menor a los primeros. En esta red en particular los dispositivos se envían paquetes
 who-has entre ellos en mayor medida, y hacia los servidores en vez de hacia el router.
 
-El valor de la entropía para el gráfico de fuente SRC es $2.05542931604$
-El valor de la entropía para el gráfico de fuente DST es $2.99926622579$
+El valor de la entropía para el gráfico de fuente SRC es $2.05$
+El valor de la entropía para el gráfico de fuente DST es $2.99$
 
 
 ~
 
 Los gráficos de barra muestran que el router ha perdido preponderancia respecto a la emisión y recepción de paquetes en comparación con otros nodos distinguidos.
 
-\begin{wrapfigure}{R}{0.4\textwidth}
-\vspace{-35pt}
-\hspace{-35pt}
-\centering
-   \includegraphics[width=1\textwidth]{resultados/empresa/conectividad.pdf}
-\vspace{-30pt}
-   \caption{Grafo de la red}
-\end{wrapfigure}
+%\begin{figure}{R}{0.4\textwidth}
+%\vspace{-35pt}
+%\hspace{-35pt}
+%\centering
+%   \includegraphics[width=1\textwidth]{resultados/empresa/conectividad.pdf}
+%\vspace{-30pt}
+%   \caption{Grafo de la red Empresa}
+%\end{wrapfigure}
+
+\begin{figure}[H]
+	\center
+	\includegraphics[width=0.9\textwidth]{resultados/empresa/conectividad.pdf}
+	\caption{Grafo de la red Empresa}
+\end{figure}
 
 ~
 
@@ -165,7 +175,7 @@ Los gráficos de barra muestran que el router ha perdido preponderancia respecto
 \centering
    \includegraphics[width=0.4\textwidth]{resultados/entrepiso/conectividadNX.pdf}
 \vspace{-30pt}
-   \caption{Grafo de la red}
+   \caption{Grafo de la red Entrepiso}
 \end{wrapfigure}
 
 En el caso del entrepiso los grafos muestran tres nodos con la forma que caracteriz\'o 
