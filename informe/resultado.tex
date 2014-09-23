@@ -9,6 +9,7 @@
    \caption{Grafo de la red}
 \end{wrapfigure}
 
+
 En el caso de la casa familiar sab\'iamos de antemano que la direcci\'on del router
 es 192.168.1.1 y que 192.168.1.35 pertenece al dispositivo que m\'as tiempo estuvo
 prendido, el mismo es una notebook. La ip del router es de las que aparece con mayor
@@ -19,6 +20,12 @@ Ambos grafos presentan forma de estrella, teniendo al router como centro.
 La entrop\'ia fue: $1.68$ para el modelo $SRC$ y $2.67$ para el modelo DST.
 Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo interesante, 
 aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
+
+~
+
+~
+
+~
 
 \begin{figure}[H]
 	\center
@@ -36,18 +43,17 @@ aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
 
 \subsection{Starbucks}
 
-\begin{wrapfigure}{R}{0.4\textwidth}
-\vspace{-35pt}
-\hspace{-35pt}
-\centering
-   \includegraphics[width=0.4\textwidth]{resultados/starbucks/conectividadNX.pdf}
-\vspace{-30pt}
-   \caption{Grafo de la red}
-\end{wrapfigure}
-
+%\begin{wrapfigure}{R}{0.4\textwidth}
+%\vspace{-20pt}
+%\hspace{-35pt}
+%\centering
+%   \includegraphics[width=0.4\textwidth]{resultados/starbucks/conectividadNX.pdf}
+%\vspace{-30pt}
+%   \caption{Grafo de la red}
+%\end{wrapfigure}
 
 Para el caso de la red abierta disponible en Starbucks, podemos ver en el 
-grafo simple una notoria centralizaci\'on de paquetes hacia/desde la direcci\'n
+grafo simple una notoria centralizaci\'on de paquetes hacia/desde la direcci\'on
 10.254.88.1, la cual a su vez posee una alta frecuencia de aparici\'on en ambos
 modelos. Esto ser\'ia el comportamiento esperado del router de la red
 10.254.88.0/24. Asumimos que \'esta es la direcci\'on de la red puesto que 
@@ -65,6 +71,7 @@ Nuevamente entre los paquetes capturados volvieron a aparecer direcciones que
 no parecieran pertenecer a la red local, resultando sumamente interesante el caso
 de 10.254.80.1
 
+
 \begin{figure}[H]
 	\center
 	\begin{subfigure}{0.4\textwidth}
@@ -78,6 +85,15 @@ de 10.254.80.1
 	\end{subfigure}
 \end{figure}
 
+~
+
+\begin{figure}[H]
+	\center
+%	\includegraphics[width=1\textwidth]{resultados/starbucks/conectividadNX.pdf}
+	\includegraphics[width=0.9\textwidth]{resultados/starbucks/starbucks.png}
+	\caption{Grafo de la red Starbucks}
+\end{figure}
+	
 
 \subsection{Empresa}
 
