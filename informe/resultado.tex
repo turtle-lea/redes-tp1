@@ -1,14 +1,18 @@
 \subsection{Casa Familia}
 
-\begin{wrapfigure}{R}{0.4\textwidth}
-\vspace{-35pt}
-\hspace{-35pt}
-\centering
-   \includegraphics[width=0.4\textwidth]{resultados/casa/conectividadNX.pdf}
-\vspace{-30pt}
-   \caption{Grafo de la red Casa}
-\end{wrapfigure}
+\FloatBarrier
 
+\FloatBarrier
+
+\begin{figure}[!h]
+	\begin{center}
+		  \includegraphics[scale=0.75]{resultados/casa/conectividadNX.pdf}
+		  \caption{Grafo de conectividad la red casa}
+		  \label{fig:contra1}
+	\end{center}
+\end{figure}
+	
+\FloatBarrier
 
 En el caso de la casa familiar sabemos que la direcci\'on del router
 es 192.168.1.1 y que 192.168.1.35 pertenece al dispositivo que m\'as tiempo estuvo
@@ -25,8 +29,17 @@ Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo i
 aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
 
 ~
+\FloatBarrier
 
-~
+\begin{figure}[!h]
+	\begin{center}
+		  \includegraphics[scale=0.23]{resultados/casa/conectividad.pdf}
+		  \caption{Grafo con pesos en las aristas de la red Casa}
+		  \label{fig:contra1}
+	\end{center}
+\end{figure}
+
+\FloatBarrier
 
 ~
 
@@ -52,6 +65,81 @@ Lo primero que notamos en este caso fue que la topología del grafo de la red (\
 no coincide con la de una estrella. Es posible observar una interacción mucho mayor 
 entre distintos pares hosts, y no únicamente entre cada uno de estos y el router.
 
+\subsection{Starbucks}
+
+%\begin{wrapfigure}{R}{0.4\textwidth}
+%\vspace{-20pt}
+%\hspace{-35pt}
+%\centering
+%   \includegraphics[width=0.4\textwidth]{resultados/starbucks/conectividadNX.pdf}
+%\vspace{-30pt}
+%   \caption{Grafo de la red}
+%\end{wrapfigure}
+
+Para el caso de la red abierta disponible en Starbucks, podemos ver en el 
+grafo simple una notoria centralizaci\'on de paquetes hacia/desde la direcci\'on
+10.254.88.1, la cual a su vez posee una alta frecuencia de aparici\'on en ambos
+modelos. Esto ser\'ia el comportamiento esperado del router de la red
+10.254.88.0/24. Asumimos que \'esta es la direcci\'on de la red puesto que 
+la mayor\'ia de las IPs de los paquetes capturados difieren en el \'ultimo octeto.
+Por otro lado, podemos ver que la segunda direcci\'on con mayor frecuencia en DST
+fue 10.254.80.1, seguida por 10.254.88.8. Suponemos que $88.8$ es la pc del lugar
+dada la ip baja, y la cantidad de apariciones. Por otro lado, no sabemos que es
+$80.1ç$ dado que parece formar una red aparte de la sniffeada.
+
+La entrop\'ia fue: $4.61$ para el modelo $SRC$ y $3.76$ para el modelo
+DST.
+
+
+Nuevamente entre los paquetes capturados volvieron a aparecer direcciones que
+no parecieran pertenecer a la red local, resultando sumamente interesante el caso
+de 10.254.80.1
+
+
+\begin{figure}[H]
+	\center
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/starbucks/ipsSrc_4_6187931499.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo SRC}
+	\end{subfigure}
+	~
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/starbucks/ipsDst_3_76848714287.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
+	\end{subfigure}
+\end{figure}
+
+\FloatBarrier
+
+~
+
+\begin{figure}[H]
+	\center
+	\includegraphics[width=0.9\textwidth]{resultados/starbucks/starbucks.png}
+	\caption{Grafo con pesos en las aristas de la red Starbucks}
+\end{figure}
+
+~
+
+\FloatBarrier
+
+\begin{figure}[!h]
+	\begin{center}
+		  \includegraphics[scale=1.00]{resultados/starbucks/conectividadNX.pdf}
+		  \caption{Grafo de conectividad la red Starbucks}
+		  \label{fig:contra1}
+	\end{center}
+\end{figure}
+	
+
+\FloatBarrier
+
+\subsection{Empresa}
+
+
+En este caso la topología del grafo de la red no coincide con la de una estrella. Es posible observar una interacción mucho mayor entre distintos pares hosts, y no únicamente
+entre cada uno de estos y el router.
+
 \begin{figure}[H]
 	\center
 	\begin{subfigure}{0.4\textwidth}
@@ -73,14 +161,13 @@ y celulares conectados a la red.
 
 ~
 
-\begin{wrapfigure}{R}{0.4\textwidth}
-\vspace{-25pt}
-\hspace{-35pt}
-\centering
-   \includegraphics[width=0.4\textwidth]{resultados/empresa/conectividadNX.pdf}
-\vspace{-30pt}
-   \caption{Topología de la red en una empresa}
-\end{wrapfigure}
+\begin{figure}[!h]
+	\begin{center}
+		  \includegraphics[scale=0.75]{resultados/empresa/conectividadNX.pdf}
+		  \caption{Topología de la red empresa}
+		  \label{fig:contra1}
+	\end{center}
+\end{figure}
 
 ~
 
@@ -109,8 +196,8 @@ y recepción de paquetes en comparación con otros nodos distinguidos.
 
 \begin{figure}[H]
 	\center
-	\includegraphics[width=0.9\textwidth]{resultados/empresa/conectividad.pdf}
-	\caption{Grafo de la red Empresa}
+	\includegraphics[scale = 0.18]{resultados/empresa/conectividad.pdf}
+	\caption{Grafo con pesos es las aristas de la red Empresa}
 \end{figure}
 
 ~
