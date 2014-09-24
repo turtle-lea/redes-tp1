@@ -66,7 +66,8 @@ def grafoConectividad(dicc,ruta):
     for e in edges:
         graph.add_edge(e)
 
-    graph.write_pdf(ruta)
+    graph.write_pdf(ruta + '.pdf')
+    graph.write_svg(ruta + '.svg')
 
     #Ahora en networkX
     graph = nx.Graph()
@@ -83,7 +84,7 @@ def grafoConectividad(dicc,ruta):
     nx.draw_networkx_labels(graph,pos,font_size=10)
 
     pylab.axis('off')
-    pylab.savefig(ruta+"NX",format='pdf')
+    pylab.savefig(ruta+"NX.pdf",format='pdf')
 
 #----------------------------------------
 
