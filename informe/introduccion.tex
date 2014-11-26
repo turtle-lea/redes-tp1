@@ -1,22 +1,20 @@
-El protocolo ARP (\emph{Adress Resolution Protocol}) permite mapear direcciones IP a direcciones
-físicas. Cuando un host desea comunicarse con otro dentro de una misma red local debe hacerlo
-utilizando la \emph{MAC Adress} del mismo. Conociendo su dirección IP, puede \emph{brodcastear} un
-paquete \emph{ARP who-has} pidiendo la \emph{MAC} asociada a dicha IP. De esta manera recibirá en
-respuesta un paquete \emph{ARP-reply} por parte del host destino.
-Para evitar una cantidad excesiva de broadcasts, cada nodo de la red mantiene su propia tabla de
-mapeos que actualiza luego de cierto tiempo.
+\section{Introducci\'on}
 
-Cada paquete ARP incluye numerosos campos. Sin embargo, pondremos énfasis especialmente en los 
-siguientes:
-\begin{itemize}
-    \item Operation: 1 (Request), 2 (Reply)
-    \item Sender hardware adress: \emph{MAC} address source
-    \item Sender protocol adress: \emph{IP} address source
-    \item Target hardware adress: \emph{MAC} address dest
-    \item Target protocol adress: \emph{IP} address dest
-\end{itemize}
+El protocolo ARP (\emph{Adress Resolution Protocol}) permite mapear direcciones
+IP a direcciones físicas. Cuando un host desea comunicarse con otro dentro de
+una misma red local debe hacerlo utilizando la \emph{MAC Adress} del mismo.
+Conociendo su dirección IP, puede \emph{brodcastear} un paquete 
+\emph{ARP who-has} pidiendo la \emph{MAC} asociada a dicha IP. De esta manera
+recibirá en respuesta un paquete \emph{ARP-reply} por parte del host destino.
+Para evitar una cantidad excesiva de broadcasts, cada nodo de la red mantiene
+su propia tabla de mapeos que actualiza peri\'odicamente.
 
-El objetivo de este trabajo práctico es analizar el flujo de paquetes \emph{who-has} en distintas
-redes no contraladas. Luego, en base a la informaci\'on recopilada, analizaremos el rol que juega
-cada dispositivo dentro de la red. De esta manera podemos corroborar de manera empírica el 
-comportamiento establecido por el protocolo \emph{ARP} para el envío de paquetes en una red local.  
+Cada paquete ARP incluye numerosos campos. Sin embargo, pondremos énfasis 
+especialmente en los siguientes: Operation (indica si es un pedido o respuesta),
+Sender Hardware Adress, Sender Protocol Adress, Target Hardware Adress y 
+Target Protocol Adress. 
+
+El objetivo de este trabajo práctico es analizar el flujo de paquetes 
+\emph{who-has} en distintas redes p\'ublicas y privadas. Luego, utilizando
+como base el concepto de \textit{entrop\'ia de la informaci\'on} analizaremos el
+rol que juega cada dispositivo dentro de la red.

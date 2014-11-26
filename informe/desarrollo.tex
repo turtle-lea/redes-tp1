@@ -1,14 +1,17 @@
-El primer paso en este trabajo fue implementar un script en \emph{python} para escuchar pasivamente
-paquetes dentro de la red local. Para esto capturamos todos los paquetes que circulan utilizando la 
-librería Scapy, y nos quedamos solo con los ARP de tipo \emph{who-has}. Luego, contamos cuantas veces
-aparece una direcci\'on en cada campo, as\'i como tambi\'en la interacci\'on entre todos los pares
-de ip. Terminamos ordenando esta información según la cantidad de paquetes, de mayor a menor.
+\section{Desarrollo}
 
+El primer paso en este trabajo fue implementar un script en \emph{python} 
+para escuchar pasivamente paquetes dentro de la red local. Para esto capturamos
+todos los paquetes que circulan utilizando la librería Scapy, y nos quedamos 
+solo con los ARP de tipo \emph{who-has}. Luego, contamos cuantas veces aparece
+una direcci\'on en cada campo, as\'i como tambi\'en la interacci\'on entre
+todos los pares de ip. Terminamos ordenando esta información según la
+cantidad de paquetes, de mayor a menor.
 
-Con estas observaciones nos proponemos a calcular la entropia tomando dos modelos distintos de fuente:
-en \textbf{$S_{src}$} los símbolos son las direcciones IP que aparecen en el campo SRC; en 
-\textbf{$S_{dst}$} son las direcciones IP que aparecen en el campo DST.
-
+Con estas observaciones nos proponemos a calcular la entropia tomando dos 
+modelos distintos de fuente: en \textbf{$S_{src}$} los símbolos son las
+direcciones IP que aparecen en el campo SRC; en \textbf{$S_{dst}$} son las
+direcciones IP que aparecen en el campo DST.
 
 En relación a esto tenemos una mejor base para realizar un análisis del estado de 
 la red al momento de las mediciones, y podemos analizar estadísticamente qué IPs 

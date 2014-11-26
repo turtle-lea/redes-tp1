@@ -1,0 +1,21 @@
+\section{M\'etodos}
+
+Sea $F$ una fuente de informaci\'on de simbolos finitos $S$, esto es, $F$ 
+produce peri\'odicamente alg\'un $s_i \in S$. Supongamos conocemos las 
+probabilidades $P(s)$ con que se produce cada s\'imbolo $s \in S$. 
+Se define la \textit{Cantidad de informaci\'on} de un s\'imbolo $s$ como: 
+$$I(s) = log_2({1}\over{P(s)} )$$
+Se define la \textit{entrop\'ia de la fuente} como:
+$$ H(S) = \sum_{s \in S}{P(s)I(s)} = - \sum_{s \in S}{P(s) log_2(P(s))}$$
+
+La \textit{Entrop\'ia} se considera una medida de incertidumbre, esto es, 
+a mayor valor, menor homegeneidad habr\'a en los mensajes emitidos por
+la fuente. Es importante notar que $0 <= H(S) <= log_2(\#S)$. La
+\textit{Entrop\'ia} ser\'a nula cuando la fuente emita siempre el mismo 
+s\'imbolo entre todos los posibles, mientras que se maximiza cuando todos
+los simbolos son emitidos equiprobablemente. 
+
+Dado que los s\'imbolos definen a una fuente, uno puede modelar una misma red  
+como distintas fuentes. Luego, utilizando el teorema central del l\'imite es
+posible estimar la probabilidad de cada s\'imbolo utilizando su frecuencia
+de aparici\'on. Esto permite calcular la entrop\'ia en redes inform\'aticas.
