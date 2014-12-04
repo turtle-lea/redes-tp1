@@ -4,8 +4,6 @@
 
 \FloatBarrier
 
-\FloatBarrier
-
 \begin{figure}[!h]
 	\begin{center}
 		  \includegraphics[scale=0.75]{resultados/casa/conectividadNX.pdf}
@@ -27,8 +25,18 @@ En la \emph{Figura 1} podemos ver que la red local se puede representar como
 un grafo en forma de estrella, el mismo tiene al router como centro. 
 
 La entrop\'ia fue: $1.68$ para el modelo $SRC$ y $2.67$ para el modelo DST.
-Cabe destacar que aunque no est\'a reflejado en los gr\'aficos, sucedi\'o algo interesante, 
-aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
+Teniendo en cuenta que se vieron 23 s\'imbolos podemos calcular el l\'imite
+superior para la entrop\'ia de estos modelos, la misma es $log_2(23)=4.52$, lo 
+cual hace que las entrop\'ias normalizadas sean aprox. $0.37$ para $SRC$ y 
+$0.59$ para $DST$. Esto indica que es mas probable encontrar la mismas 
+IP enviando siempre paquetes, mientras que las IP que reciben la mayor
+cantidad de paquetes son varias. Lo que ya se ve\'ia reflejado en las figuras
+\emph{a} y \emph{b} donde el router es el \'unico que posee una frecuencia de
+env\'io 6 veces superior a todo el resto de los nodos, por otro lado en $DST$
+son tres los nodos en esta situaci\'on.
+
+Cabe destacar algo interesante que sucedi\'o, aparecieron paquetes ARP que
+pose\'ian direcciones que no pertenecian a la red local.
 
 ~
 \FloatBarrier
@@ -61,11 +69,76 @@ aparecieron paquetes ARP con direcciones que no pertenecian a la red local.
 
 \subsection{Empresa}
 
-Nuevamete, en esta red teníamos conocimiento de quien era el router y las computadoras mas 
-importantes. 
-Lo primero que notamos en este caso fue que la topología del grafo de la red (\emph{Figuras 4 y 5})
-no coincide con la de una estrella. Es posible observar una interacción mucho mayor 
-entre distintos pares hosts, y no únicamente entre cada uno de estos y el router.
+Nuevamete, en esta red teníamos conocimiento de quien era el router y las 
+computadoras mas importantes. 
+En este caso podemos apreciar que el router no fue el nodo central en la 
+representaci\'on de la red (\emph{Figuras 4 y 5}) como sucedi\'o en el caso
+anterior. A su vez, es posible observar una interacción mucho mayor 
+entre distintos pares hosts, y no únicamente entre cada uno de estos y el
+router.
+
+\begin{figure}[H]
+	\center
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/empresa/ipsSrc_2_05542931604.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo SRC}
+	\end{subfigure}
+	~
+	\begin{subfigure}{0.4\textwidth}
+		\includegraphics[width=1.0\textwidth]{resultados/empresa/ipsDst_2_99926622579.pdf}
+		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
+	\end{subfigure}
+\end{figure}
+
+En el gráfico de barras del modelo SRC el router juega un papel relevante ya que es el segundo
+símbolo con mayor cantidad de emisión de paquetes. Es interesante mencionar que el 
+nodo con mayor cantidad de paquetes enviados, cuya ip es 192.168.0.2, corresponde a un servidor apache.
+El resto de los nodos que aparecen en el gráfico corresponden a notebooks
+y celulares conectados a la red.
+
+~
+
+\begin{figure}[!h]
+	\begin{center}
+		  \includegraphics[scale=0.75]{resultados/empresa/conectividadNX.pdf}
+		  \caption{Topología de la red empresa}
+		  \label{fig:contra1}
+	\end{center}
+\end{figure}
+
+~
+
+En el gráfico de barras del modelo DST es en donde se nota la mayor cantidad de diferencias. 
+El router no se corresponde con ninguno de los 3 nodos con mayor cantidad de paquetes
+recibidos:
+
+\begin{itemize}
+    \item 192.168.0.118 corresponde a una notebook
+    \item 192.168.0.125 corresponde a un servidor apache
+    \item 192.168.0.107 corresponde a un servidor apache
+\end{itemize}
+
+Recién aparece en la cuarta posición, con una cantidad de paquetes recibidos considerablemente
+menor a los primeros. En esta red en particular los dispositivos se envían paquetes
+who-has entre ellos en mayor medida, y hacia los servidores en vez de hacia el router.
+
+El valor de la entropía para el modelo SRC es $2.05$. El valor de la entropía para 
+el modelo DST es $2.99$
+
+
+~
+
+Los gráficos de barra muestran que el router ha perdido preponderancia respecto a la emisión
+y recepción de paquetes en comparación con otros nodos distinguidos.
+
+\begin{figure}[H]
+	\center
+	\includegraphics[scale = 0.18]{resultados/empresa/conectividad.pdf}
+	\caption{Grafo con pesos es las aristas de la red Empresa}
+\end{figure}
+
+~
+
 
 \subsection{Starbucks}
 
@@ -135,74 +208,6 @@ de 10.254.80.1
 	
 
 \FloatBarrier
-
-\subsection{Empresa}
-
-
-En este caso la topología del grafo de la red no coincide con la de una estrella. Es posible observar una interacción mucho mayor entre distintos pares hosts, y no únicamente
-entre cada uno de estos y el router.
-
-\begin{figure}[H]
-	\center
-	\begin{subfigure}{0.4\textwidth}
-		\includegraphics[width=1.0\textwidth]{resultados/empresa/ipsSrc_2_05542931604.pdf}
-		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo SRC}
-	\end{subfigure}
-	~
-	\begin{subfigure}{0.4\textwidth}
-		\includegraphics[width=1.0\textwidth]{resultados/empresa/ipsDst_2_99926622579.pdf}
-		\caption{Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
-	\end{subfigure}
-\end{figure}
-
-En el gráfico de barras del modelo SRC el router juega un papel relevante ya que es el segundo
-símbolo con mayor cantidad de emisión de paquetes. Es interesante mencionar que el 
-nodo con mayor cantidad de paquetes enviados, cuya ip es 192.168.0.2, corresponde a un servidor apache.
-El resto de los nodos que aparecen en el gráfico corresponden a notebooks
-y celulares conectados a la red.
-
-~
-
-\begin{figure}[!h]
-	\begin{center}
-		  \includegraphics[scale=0.75]{resultados/empresa/conectividadNX.pdf}
-		  \caption{Topología de la red empresa}
-		  \label{fig:contra1}
-	\end{center}
-\end{figure}
-
-~
-
-En el gráfico de barras del modelo DST es en donde se nota la mayor cantidad de diferencias. 
-El router no se corresponde con ninguno de los 3 nodos con mayor cantidad de paquetes
-recibidos:
-
-\begin{itemize}
-    \item 192.168.0.118 corresponde a una notebook
-    \item 192.168.0.125 corresponde a un servidor apache
-    \item 192.168.0.107 corresponde a un servidor apache
-\end{itemize}
-
-Recién aparece en la cuarta posición, con una cantidad de paquetes recibidos considerablemente
-menor a los primeros. En esta red en particular los dispositivos se envían paquetes
-who-has entre ellos en mayor medida, y hacia los servidores en vez de hacia el router.
-
-El valor de la entropía para el modelo SRC es $2.05$. El valor de la entropía para 
-el modelo DST es $2.99$
-
-
-~
-
-Los gráficos de barra muestran que el router ha perdido preponderancia respecto a la emisión
-y recepción de paquetes en comparación con otros nodos distinguidos.
-
-\begin{figure}[H]
-	\center
-	\includegraphics[scale = 0.18]{resultados/empresa/conectividad.pdf}
-	\caption{Grafo con pesos es las aristas de la red Empresa}
-\end{figure}
-
-~
 
 \subsection{Starbucks}
 
