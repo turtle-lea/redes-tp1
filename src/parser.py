@@ -31,13 +31,13 @@ def guardarHistograma(dicc,campo,archivo):
 
     ipsOrdenadas = sorted(dicc, key=dicc.get)[-14:]
     totalSumaVal = float(sum(dicc.values()))
-    valoresOrden = [1 - sum(dicc[ip] for ip in ipsOrdenadas) / totalSumaVal] + [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ]
+    valoresOrden = [ dicc[ip]/totalSumaVal for ip in ipsOrdenadas ]
 
     largo = len(ipsOrdenadas)
-    yPos  = xrange(-4,(largo-2)*2 + 2,2)
+    yPos  = xrange(-4,(largo-3)*2 + 2,2)
     myBar = pylab.barh(yPos, valoresOrden, alpha=0.5,height=1.8,align='center')
 
-    pylab.yticks(yPos, ['Otros'] + ipsOrdenadas)
+    pylab.yticks(yPos, ipsOrdenadas)
 
     pylab.xlabel('Frecuencia')
     pylab.ylabel('IP')
@@ -116,8 +116,19 @@ with open(entrada,'r') as archivo:
 
 esrc = entropia(ipsSrc)
 edst = entropia(ipsDst)
+
 guardarHistograma(ipsDst,'DST',salida+"ipsDst_"+str(float(edst)))
 guardarHistograma(ipsSrc,'SRC',salida+"ipsSrc_"+str(float(esrc)))
-grafoConectividad(ipsCon,salida+"conectividad")
+
+print len(numpy.union1d(ipsSrc.keys(), ipsDst.keys()))
+
+
+most_common = ipsCon.most_common(20)
+mc = Counter()
+
+for x,z in most_common:
+    mc[x] = z
+
+grafoConectividad(mc,salida+"conectividad")
 
 
