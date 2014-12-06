@@ -4,7 +4,7 @@
 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[scale=.6]{resultados/casa/conectividadNX.pdf}
+        \includegraphics[scale=.6]{resultados/casa/conectividadNX.png}
 		  \caption{Grafo de conectividad en la casa}
 	\end{center}
 \end{figure}
@@ -67,7 +67,7 @@ pose\'ian direcciones que no pertenecian a la red local.
 
 \begin{figure}[!h]
 	\begin{center}
-		  \includegraphics[scale=0.6]{resultados/empresa/conectividadNX.pdf}
+		  \includegraphics[scale=0.6]{resultados/empresa/conectividadNX.png}
 		  \caption{Grafo de conectividad en la empresa}
 		  \label{fig:contra1}
 	\end{center}
@@ -98,7 +98,8 @@ router.
 
 El valor de la entropía para el modelo SRC es $2.05$. El valor de la entropía
 para el modelo DST es $2.99$. Teniendo en cuenta que se vieron 40 ips, 
-acotamos la entrop\'ia maxima por $log_2(40)=5.32$ lo cual normaliza las 
+asumimos que las fuentes poseen 40 s\'imbolos, lo cual nos permite 
+calcular la entrop\'ia maxima ($log_2(40)=5.32$) lo cual normaliza las 
 entropias a $0.38$ y $0.56$. Nuevamente el modelo SRC posee un valor mayor.
 
 En el gráfico de barras del modelo SRC (gr\'afico \emph{c}) el router juega
@@ -139,7 +140,7 @@ de aparici\'on. Suponemos que por esto la entrop\'ia de este modelo es mas alta.
 
 \begin{figure}[h!]
 	\begin{center}
-		  \includegraphics[scale=.6]{resultados/starbucks/conectividadNX.pdf}
+		  \includegraphics[scale=.6]{resultados/starbucks/conectividadNX.png}
 		  \caption{Grafo de conectividad en Starbucks}
 		  \label{fig:contra1}
 	\end{center}
@@ -147,8 +148,8 @@ de aparici\'on. Suponemos que por esto la entrop\'ia de este modelo es mas alta.
 
 
 Para el caso de la red abierta disponible en Starbucks se recopil\'o
-informaci\'on de 200 nodos en total, las \emph{Figuras 7 y 8} fueron 
-creadas con solo 40 de ellos, en caso de agregar m\'as nodos se notar\'ia
+informaci\'on de 200 nodos en total, la \emph{Figura 7} fue 
+creada con solo 40 de ellos, en caso de agregar m\'as nodos se notar\'ia
 que todos est\'an conectados que el nodo 10.254.88.1. 
 A su vez posee una alta frecuencia de aparici\'on en ambos
 modelos. Esto ser\'ia el comportamiento esperado del router de la red
@@ -183,23 +184,17 @@ no parecieran pertenecer a la red local, resultando sumamente interesante el cas
 de 10.254.80.1
 
 
-\begin{figure}[H]
-	\center
-	\includegraphics[width=1.\textwidth]{resultados/starbucks/conectividad.pdf}
-	\caption{Intercambio de paquetes ARP en Starbucks}
-\end{figure}
-
 \subsection{Entrepiso}
 
 \begin{figure}[h!]
     \center
-    \includegraphics[width=0.6\textwidth]{resultados/entrepiso/conectividadNX.pdf}
+    \includegraphics[scale=0.6]{resultados/entrepiso/conectividadNX.png}
     \caption{Grafo de conectividad en la red Entrepiso}
 \end{figure}
 
 En el caso del entrepiso se detectaron 205 ips, lamentablemente la forma en que
 las mismas se comunicaron entre si hizo imposible el graficar una representaci\'on
-adecuada con las herramientas que usamos. Las \emph{Figuras 8 y 10} muestran
+adecuada con las herramientas que usamos. La \emph{Figura 9} muestra
 varios subgrafos conexos, donde se destacan los nodos: 10.1.100.254, 10.1.200.30
 y 10.1.200.254. Por las direcciones IP $200.254$ y $100.254$ parecieran ser routers.
 La entrop\'ia fue: $4.25$ para el
@@ -209,7 +204,7 @@ Podemos ver esto reflejado en los gr\'aficos \emph{g y h}, donde las diferencias
 en frecuencias entre los nodos no es tan grande como en los casos vistos hasta
 ahora.
 
-A su vez, si no fuera por las \emph{Figuras 8 y 10} no podriamos buscar un
+A su vez, si no fuera por la \emph{Figura 8} no podriamos buscar un
 candidato tan claro a router, ya que $200.254$ y $100.254$ aparecen reci\'en
 en cuarto y quinto lugar para SRC, mientras que aparecen en quinto y decimo 
 lugar para DST.
@@ -227,11 +222,6 @@ Una vez mas aparecieron direcciones sueltas, como es por ej: 10.1.11.254.
 		\includegraphics[width=1.0\textwidth]{resultados/entrepiso/ipsDst_4_90633854055.pdf}
 		\caption{h. Estimaci\'on de la probabilidad de cada s\'imbolo en modelo DST}
 	\end{subfigure}
-\end{figure}
-
-\begin{figure}[H]
-	\includegraphics[width=1.0\textwidth]{resultados/entrepiso/conectividad.pdf}
-	\caption{Digrafo de conectividad en el entrepiso}
 \end{figure}
 
 
