@@ -79,9 +79,13 @@ def grafoConectividad(dicc,ruta):
 
     nx.draw_networkx_nodes(graph,pos,node_size=300,alpha=0.4,label="string")
     
-    nx.draw_networkx_edges(graph,pos,alpha=0.4)
+
+    
+    nx.draw_networkx_edges(graph,pos,alpha=0.4, width=1)
 
     nx.draw_networkx_labels(graph,pos,font_size=10)
+
+
 
     pylab.axis('off')
     pylab.savefig(ruta+"NX.pdf",format='pdf')
